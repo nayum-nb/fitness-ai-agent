@@ -1,0 +1,13 @@
+name: fitness_ai_mobile
+description: "A new Flutter project."
+publish_to: 'none' # Remove this if you wish to publish to pub.dev
+
+environment:
+  sdk: '^3.13.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+  sqflite: ^2.3.0
+  path_provider: ^2.1.1
+  path: ^1.8.3

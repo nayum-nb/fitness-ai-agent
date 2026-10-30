@@ -1,5 +1,7 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
+import '../models/workout_log.dart';
+import '../models/daily_metric.dart';
 
 class DatabaseHelper {
   static final DatabaseHelper instance = DatabaseHelper._init();
@@ -63,24 +65,43 @@ class DatabaseHelper {
     ''');
   }
 
-  // --- CRUD Method: Insert Workout ---
-  Future<int> insertWorkout(Map<String, dynamic> row) async {
+  // --- Insert Workout using Model ---
+  Future<int> insertWorkoutModel(WorkoutLog workout) async {
     final db = await instance.database;
-    return await db.insert('workout_logs', row);
+    return await db.insert('workout_logs', workout.toMap());
   }
 
   // --- CRUD Method: Get Workouts by Date ---
-  Future<List<Map<String, dynamic>>> getWorkoutsByDate(String date) async {
+  Future<List<WorkoutLog>> getWorkoutLogsByDate(String date) async {
     final db = await instance.database;
-    return await db.query(
+    final result = await db.query(
       'workout_logs',
       where: 'date = ?',
       whereArgs: [date],
+    );
+    return result.map((json) => WorkoutLog.fromMap(json)).toList();
+  }
+
+  // --- Upsert Daily Metrics ---
+  Future<int> upsertDailyMetric(DailyMetric metric) async {
+    final db = await instance.database;
+    return await db.insert(
+      'daily_metrics',
+      metric.toMap(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
     );
   }
 
   Future<void> close() async {
     final db = await instance.database;
     db.close();
+  }
+
+  // Add this inside your DatabaseHelper class
+  Future<void> clearAllTables() async {
+    final db = await instance.database;
+    await db.delete('workout_logs');
+    await db.delete('daily_metrics');
+    await db.delete('user_profile');
   }
 }

@@ -9,6 +9,7 @@
       "dependencies": [
         "flutter",
         "flutter_lints",
+        "flutter_riverpod",
         "flutter_test",
         "path",
         "path_provider",
@@ -16,6 +17,18 @@
         "sqflite_common_ffi"
       ],
       "devDependencies": []
+    },
+    {
+      "name": "flutter_riverpod",
+      "version": "3.4.3",
+      "dependencies": [
+        "collection",
+        "flutter",
+        "flutter_test",
+        "meta",
+        "riverpod",
+        "state_notifier"
+      ]
     },
     {
       "name": "sqflite_common_ffi",
@@ -95,8 +108,35 @@
       ]
     },
     {
+      "name": "state_notifier",
+      "version": "1.0.0",
+      "dependencies": [
+        "meta"
+      ]
+    },
+    {
+      "name": "riverpod",
+      "version": "3.4.3",
+      "dependencies": [
+        "async",
+        "clock",
+        "collection",
+        "listen",
+        "meta",
+        "stack_trace",
+        "state_notifier",
+        "test_api",
+        "uuid"
+      ]
+    },
+    {
       "name": "meta",
       "version": "1.19.0",
+      "dependencies": []
+    },
+    {
+      "name": "collection",
+      "version": "1.19.1",
       "dependencies": []
     },
     {
@@ -140,11 +180,6 @@
       "dependencies": [
         "async"
       ]
-    },
-    {
-      "name": "collection",
-      "version": "1.19.1",
-      "dependencies": []
     },
     {
       "name": "leak_tracker_flutter_testing",
@@ -308,6 +343,29 @@
       "dependencies": []
     },
     {
+      "name": "uuid",
+      "version": "4.6.0",
+      "dependencies": [
+        "crypto",
+        "fixnum"
+      ]
+    },
+    {
+      "name": "listen",
+      "version": "1.0.1",
+      "dependencies": [
+        "meta"
+      ]
+    },
+    {
+      "name": "async",
+      "version": "2.13.1",
+      "dependencies": [
+        "collection",
+        "meta"
+      ]
+    },
+    {
       "name": "crypto",
       "version": "3.0.8",
       "dependencies": []
@@ -363,14 +421,6 @@
       "name": "ffi",
       "version": "2.2.0",
       "dependencies": []
-    },
-    {
-      "name": "async",
-      "version": "2.13.1",
-      "dependencies": [
-        "collection",
-        "meta"
-      ]
     },
     {
       "name": "leak_tracker_testing",
@@ -477,6 +527,11 @@
         "path",
         "plugin_platform_interface"
       ]
+    },
+    {
+      "name": "fixnum",
+      "version": "1.1.1",
+      "dependencies": []
     },
     {
       "name": "pub_semver",
